@@ -1,0 +1,24 @@
+{%  extends "base.html.twig" %}
+
+{% block title %} Create a new playlist | {{ parent()}} {% endblock %}
+
+{% block body %}
+
+
+    {# TODO: Add track list #}
+
+<h1>{{ title }}</h1>
+
+
+<div>
+    Our sweet track list:
+    <ul>
+        {% for index, track in tracks %}
+        <li>{{ index+1 }}) {{ track.song|upper }} : {{ track.artist }}</li>
+
+        {% endfor  %}
+    </ul>
+
+</div>
+
+{% endblock %}
