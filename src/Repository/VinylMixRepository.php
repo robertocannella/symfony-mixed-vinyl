@@ -41,10 +41,11 @@ class VinylMixRepository extends ServiceEntityRepository
     }
 
     /**
+     * @param string|null $genre
      * @param string|null $sortOrder ASC or DESC order (ascending default)
-     * @return VinylMix[] Returns an array of VinylMix objects
+     * @return QueryBuilder Returns an array of VinylMix objects
      */
-    public function findAllOrderedByVotes(string $genre = null, string $sortOrder=null): array
+    public function createOrderedByVotesQueryBuilder(string $genre = null, string $sortOrder=null): QueryBuilder
     {
         $queryBuilder =  $this->addOrderByVotesQueryBuilder(($sortOrder) ? $sortOrder : 'ASC');
 
@@ -53,9 +54,7 @@ class VinylMixRepository extends ServiceEntityRepository
                 ->andWhere('mix.genre = :genre')
                 ->setParameter('genre',$genre);
 
-        return $queryBuilder
-                ->getQuery()
-                ->getResult();
+        return $queryBuilder;
 
     }
 
