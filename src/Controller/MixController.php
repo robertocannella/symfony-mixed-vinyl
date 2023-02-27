@@ -39,7 +39,7 @@ class MixController extends AbstractController
                 $mix->getTrackCount()
         ));
     }
-    #[Route('/mix/{id}',name:'app_mix_show')]
+    #[Route('/mix/{slug}',name:'app_mix_show')]
 
 //    public function show(int $id, VinylMixRepository $vinylMixRepository):Response{
     /* This works on 6.2, On versions < 6.2, run 'composer require sensio/framework-extra-bundle' */
@@ -66,7 +66,7 @@ class MixController extends AbstractController
         $this->addFlash('success', 'Vote added!');
 
         return $this->redirectToRoute('app_mix_show',[
-           'id'=> $mix->getId()
+           'slug'=> $mix->getSlug()
         ]);
 
     }
