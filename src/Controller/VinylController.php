@@ -50,7 +50,7 @@ class VinylController extends AbstractController
         $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
             adapter: $adapter,
             currentPage: $request->query->get('page') ?? 1,
-            maxPerPage: 9
+            maxPerPage: 8
         );
 
         return $this->render('vinyl/browse.html.twig', [
